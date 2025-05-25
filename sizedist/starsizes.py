@@ -4,7 +4,7 @@ import csv
 
 from utils import reel, colorof
 
-pl.rcParams.update({'font.size': 14})
+pl.rcParams.update({'font.size': 18})
 pl.style.use('dark_background')
 
 def setup(a,b,c,d,fname='limits.txt'):
@@ -18,8 +18,8 @@ def setup(a,b,c,d,fname='limits.txt'):
     pl.ylim(ymin,ymax)
     pl.xlim(xmin,xmax)
     pl.gca().set_aspect('equal')
-    pl.ylabel('distance (parsecs)')
-    pl.xlabel('size (relative to solar)')
+    pl.ylabel('Distance (pc)')
+    pl.xlabel('Size ($R_\\odot$)')
     bbox = ax.get_position()
 
 def nopic(s,x,y):
@@ -39,14 +39,15 @@ setup(xmin/dsol,xmax/dsol,ymin/pc,ymax/pc)
 y = np.array((ymin,ymax*1000)) / pc
 ylo = 1e-6*y
 tcol = "#bcd4d6"
+tcol = 'turquoise'
 
 x = y * pc/dsol * 1e-7
 pl.fill_between(x, y1=ylo, y2=y, color="gray", alpha=0.3)
-pl.text(x[-1]/36000,y[-1]/24000, "JWST", rotation=45, color=tcol)
+pl.text(x[-1]/45000,y[-1]/30000, "JWST", rotation=45, color=tcol)
 
 x = y * pc/dsol * 4e-9
 pl.fill_between(x, y1=ylo, y2=y, color="gray", alpha=0.3)
-pl.text(x[-1]/30000,y[-1]/20000, "VERITAS/MAGIC/HESS", rotation=45, color=tcol)
+pl.text(x[-1]/51000,y[-1]/34000, "VERITAS/MAGIC/HESS", rotation=45, color=tcol)
 
 x = y * pc/dsol * 1e-9
 pl.fill_between(x, y1=ylo, y2=y, color="gray", alpha=0.3)
@@ -62,6 +63,8 @@ def star(s):
     x,y = 2*R,dis
     pl.plot(x/dsol,y/pc,'o',color=colorof(T))
     nopic(name,x*dx/dsol,y*dy/pc)
+    
+pl.rcParams.update({'font.size': 14})
 
 fil = open('starsizes.txt')
 while True:
