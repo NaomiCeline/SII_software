@@ -55,7 +55,7 @@ pl.text(x[-1]/6000,y[-1]/4000, "CHARA", rotation=45, color=tcol)
 
 x = y * pc/dsol * 2e-10
 pl.fill_between(x, y1=ylo, y2=y, color="gray", alpha=0.3)
-pl.text(x[-1]/6000,y[-1]/4000, "CTA-S", rotation=45, color=tcol)
+pl.text(x[-1]/6000,y[-1]/4000, "CTAO-S", rotation=45, color=tcol)
 
 
 def star(s):
